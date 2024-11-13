@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model backoffice_roles {
+  id              Int               @id @default(autoincrement())
+  name_th         String?           @db.VarChar
+  name_en         String?           @db.VarChar
+  permissions     String[]          @db.VarChar
+  created_at      DateTime?         @db.Timestamp(6)
+  created_by      DateTime?         @db.Timestamp(6)
+  updated_at      DateTime?         @db.Timestamp(6)
+  updated_by      DateTime?         @db.Timestamp(6)
+  backoffice_user backoffice_user[]
+}
+
+model backoffice_splash_page {
+  id          Int       @id @default(autoincrement())
+  uuid        String?   @db.Uuid
+  name        String?   @db.VarChar
+  description String?   @db.VarChar
+  start_date  DateTime? @db.Timestamp(6)
+  end_date    DateTime? @db.Timestamp(6)
+  image_path  String?   @db.VarChar
+  created_at  DateTime? @db.Timestamp(6)
+  created_by  DateTime? @db.Timestamp(6)
+  updated_at  DateTime? @db.Timestamp(6)
+  updated_by  DateTime? @db.Timestamp(6)
+}
+
+model backoffice_user {
+  id                  Int               @id @default(autoincrement())
+  uuid                String?           @db.Uuid
+  name                String?           @db.VarChar
+  lastname            String?           @db.VarChar
+  email               String?           @db.VarChar
+  phone               String?           @db.VarChar
+  username            String?           @db.VarChar
+  password            String?           @db.VarChar
+  backoffice_roles_id Int?
+  created_at          DateTime?         @db.Timestamp(6)
+  created_by          DateTime?         @db.Timestamp(6)
+  updated_at          DateTime?         @db.Timestamp(6)
+  updated_by          DateTime?         @db.Timestamp(6)
+  backoffice_roles    backoffice_roles? @relation(fields: [backoffice_roles_id], references: [id])
+}
