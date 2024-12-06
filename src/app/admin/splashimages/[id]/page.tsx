@@ -1,27 +1,31 @@
-import { Box, Button } from "@mantine/core"
-import Link from "next/link"
-import SplashForm from "../components/SplashForm"
-import { getSplashImageById } from "@/app/server/admin/splashimages"
+import { Box, Button } from "@mantine/core";
+import Link from "next/link";
+import SplashForm from "../components/SplashForm";
+import { getSplashImageById } from "@/app/server/admin/splashimages";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 export default async function Page({
-    params,
-    searchParams,
-  }: {
-    params: Promise<{ slug: string }>
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-  }) {
-    const {id} = (await params)
- 
-    const result =  await getSplashImageById(id);
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { id }: any = await params;
 
-    // console.log(data)
-    return (
-      <Box>
-        <Link href={`/admin/splashimages`}>
-          <Button bg={"#c8cad3"}>Back</Button>
-        </Link>
-        <h1>Edit splashimages</h1>
-        <SplashForm type={`update`} data={result.data} id={id} />
-      </Box>
-    
-    )
-  }
+  const result = await getSplashImageById(id);
+
+  // console.log(data)
+  return (
+    <Box>
+      <Link href={`/admin/splashimages`}>
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          style={{ fontSize: `24px`, color: "black", cursor: `pointer` }}
+        />
+      </Link>
+      <h1>Edit splashimages</h1>
+      <SplashForm type={`update`} data={result.data} id={id} />
+    </Box>
+  );
+}

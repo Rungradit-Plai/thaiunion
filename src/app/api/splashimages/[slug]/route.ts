@@ -8,8 +8,8 @@ type ResponseData = {
 const prisma = new PrismaClient();
  
 
-export async function DELETE(request: Request,{params}){
-    const {slug} = params;
+export async function DELETE(request: Request,{params}:any){
+    const {slug}:any = await params;
     try{
         if(request.method == 'DELETE'){
         //   const {name,description,start_date,end_date} = await request.json();
@@ -37,9 +37,9 @@ export async function DELETE(request: Request,{params}){
       }
 }
 
-export async function GET(request: Request,{params}){
+export async function GET(request: Request,{params}:any){
     try{
-        const {slug} = params;
+        const {slug}:any = await params;
         if(request.method == 'GET'){
 
           const result = await prisma.backoffice_splash_page.findUnique({
@@ -64,13 +64,13 @@ export async function GET(request: Request,{params}){
     
       }
 }
-export async function PATCH(request: Request,{params}){
+export async function PATCH(request: Request,{params}:any){
     
-    const {slug} = params;
-  
+    const {slug}:any = await params;
     try{
-        if(request.method == 'PATCH'){
+      if(request.method == 'PATCH'){
         const {name,description,start_date,end_date,image_path} = await request.json();
+      
 
           const result = await prisma.backoffice_splash_page.update({
             where:{
@@ -95,7 +95,7 @@ export async function PATCH(request: Request,{params}){
           {
             statua:500,
             message:'Internal server error',
-            // data:slug
+            data:error
           }
         );
     

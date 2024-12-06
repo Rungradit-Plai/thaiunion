@@ -19,10 +19,11 @@ export async function POST(req: Request) {
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
     }
-    const unixTimeZero = Date.parse(new Date());
+    // const datenow = new Date();
+    const unixTimeZero = Date.now();
     const fileName = `uploads/${unixTimeZero}.${file.type.split("/")[1]}`;
     
-    const uploadParams = {
+    const uploadParams:any = {
       Bucket: process.env.AWS_BUCKET_NAME!,
       // Bucket: `xxxx`,
       Key: fileName,

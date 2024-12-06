@@ -1,0 +1,22 @@
+.image{
+   
+    
+    &:hover{
+        opacity: 0.1;
+       .icon{
+            display: block;
+           
+       }
+    }
+   
+}
+.date_range{
+    display: none;
+}
+.icon{
+    display: none;
+    opacity: 1;
+}
+/* .image:hover  .icon{
+    display: block;
+} */

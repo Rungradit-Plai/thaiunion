@@ -12,7 +12,7 @@ export async function getSplashImage () {
     console.log(res)
     return res.json();
 }
-export async function uploadImageS3(file) {
+export async function uploadImageS3(file:File) {
     const formData = new FormData();
     formData.append('file', file);
     const res = await fetch(url,{
@@ -21,7 +21,7 @@ export async function uploadImageS3(file) {
     })
     return res.json();
 }
-export async function deleteImageS3(data) {
+export async function deleteImageS3(data:any) {
   
     const res = await fetch(url,{
         method:'DELETE',

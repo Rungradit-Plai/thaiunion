@@ -12,27 +12,27 @@ export async function getSplashImage () {
     console.log(res)
     return res.json();
 }
-export async function addSplashImage(data) {
+export async function addSplashImage(data:any) {
     const res = await fetch(url,{
         method:'POST',
         body:JSON.stringify(data)
     })
     return res.json();
 }
-export async function deleteSplashImage(id) {
+export async function deleteSplashImage(id:string) {
     const res = await fetch(`${url}/${id}`,{
         method:'DELETE'
     })
     return res.json();
     
 }
-export async function getSplashImageById(id) {
+export async function getSplashImageById(id:string) {
     const res = await fetch(`${url}/${id}`,{
         method:'GET'
     })
     return res.json(); 
 }
-export async function updateSplashImageById(id,data) {
+export async function updateSplashImageById(id:string,data:any) {
     const res = await fetch(`${url}/${id}`,{
         method:'PATCH',
         body:JSON.stringify(data)

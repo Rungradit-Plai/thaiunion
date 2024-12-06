@@ -36,44 +36,46 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
     setActive(index);
   };
   return (
-    <Box>
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{ width: 200, breakpoint: "sm", collapsed: { mobile: !opened } }}
+      padding="md"
+    >
       <Flex>
-        <Box
-          fz={`1.5rem`}
-          fw={`600`}
-          flex={`flex`}
-          ta={`center`}
-          py={`20px`}
-          px={`20px`}
-        >
-          Back Office
-        </Box>
+        <AppShell.Header>
+          <Group h="100%" px="md">
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              hiddenFrom="sm"
+              size="sm"
+            />
+            {/* <MantineLogo size={30} /> */}
+            header
+          </Group>
+        </AppShell.Header>
       </Flex>
-      <Flex direction={`row`} bg={`#f5f5f5`} mih={"100vh"} h={`100%`}>
-        <Box
-          bd={`1px`}
-          bg={`#ffff`}
-          miw={`280px`}
-          ta={`left`}
-          style={{
-            position: `sticky`,
-          }}
-        >
-          <List fw={`bold`}>
+
+      <Flex w={`100%`}>
+        <AppShell.Navbar p="md">
+          {/* Navbar */}
+          <List c={`#f5f5f5`} fw={`bold`}>
             {menu.map((row: any, index: number) => (
               <Link key={index} href={row.link}>
                 <List.Item
                   key={index}
+                  // className={activeIndex == index ? 'active':''}
                   my={`xs`}
                   p={`xs`}
-                  mx={`xs`}
                   // ml={'xs'}
-                  c={activeIndex == index ? `primary-color` : ""}
-                  bg={activeIndex == index ? `transparent` : ""}
+                  c={activeIndex == index ? `#007bff` : ""}
+                  // bg={activeIndex == index ?`#007bff`:''}
+
+                  // ta={`center`}
                   style={{
                     listStyle: `none`,
                     cursor: `pointer`,
-
+                    // backgroundColor: activeIndex == index ? `#007bff` : '',
                     borderRadius: `5px`,
                   }}
                   onClick={() => {
@@ -85,19 +87,24 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
           </List>
-        </Box>
-        <Box
-          w={`100%`}
-          m={`2em`}
-          p={`3rem`}
-          //   bd={`1px solid`}
-          h={`fit-content`}
-          bg={"#ffff"}
-          style={{ borderRadius: "0.5rem" }}
+        </AppShell.Navbar>
+        <AppShell.Main
+          style={{
+            backgroundColor: "#f5f5f5",
+          }}
         >
-          <Box>{children}</Box>
-        </Box>
+          <Paper
+            shadow="md"
+            radius="lg"
+            p={`xl`}
+            style={{
+              minHeight: "50vh",
+            }}
+          >
+            {children}
+          </Paper>
+        </AppShell.Main>
       </Flex>
-    </Box>
+    </AppShell>
   );
 }

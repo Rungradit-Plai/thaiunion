@@ -1,16 +1,22 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
-import { cookies } from 'next/headers'
- 
-// This function can be marked `async` if using `await` inside
-export async function middleware(request: NextRequest) {
-  const cookieStore = await cookies()
-  const theme = cookieStore.get('theme')
-  console.log(theme?.value)
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
+export function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+
+  console.log(pathname)
+  // Example: Redirect all users from an old route to a new one
+  if (pathname === '/' || pathname === '/admin') {
+    const newUrl = new URL('/admin/splashimages', req.url);
+    return NextResponse.redirect(newUrl); // Redirect to the new route
+  }
+
+  // Default: Allow the request to proceed
+  return NextResponse.next();
 }
- 
-// See "Matching Paths" below to learn more
+
 export const config = {
-  // matcher: '/admin/:path*',
-}
+  // Match specific paths (optional)
+  // matcher: ['/protected/:path*', '/old-route'],
+};

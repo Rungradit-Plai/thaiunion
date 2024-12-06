@@ -1,7 +1,0 @@
-.test {
-    color: red;
-    transition: all 0.35s;
-    &:hover {
-        color: green;
-    }
-}
