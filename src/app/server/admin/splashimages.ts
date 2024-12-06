@@ -1,10 +1,7 @@
 import axios from "axios";
 
-const a = axios.create({
-    baseURL: 'http://localhost:3000'
-})
-
-const url = 'http://localhost:3000/api/splashimages'
+const baseURL = process.env.NEXT_PUBLIC_API_URL
+const url = `${baseURL}/api/splashimages`
 
 export async function getSplashImage () {
     // const url = 'https://pokeapi.co/api/v2/pokemon/ditto';
