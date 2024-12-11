@@ -10,7 +10,11 @@ import {
   Flex,
   Loader,
   Input,
+  Text,
+  rem,
 } from "@mantine/core";
+import { IconUpload, IconPhoto, IconX } from "@tabler/icons-react";
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { DateInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import dayjs from "dayjs";
@@ -29,6 +33,7 @@ import css from "./splashForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { DatePickerInput } from "@mantine/dates";
+
 export default function SplashForm({ type, data, id }: any) {
   const [isOpen, setOpen] = useState(false);
   // const [list,setList] = useState({});
@@ -54,11 +59,6 @@ export default function SplashForm({ type, data, id }: any) {
         value.length < 2 ? `Name must have at least 2 letters` : null,
       description: (value) =>
         value.length < 2 ? `description must have at least 2 letters` : null,
-
-      //   start_date: (value) =>
-      //     value.length < 2 ? `start_date must have at least 2 letters` : null,
-      //   end_date: (value) =>
-      //     value.length < 2 ? `end_date must have at least 2 letters` : null,
     },
   });
   async function addSplashImages(val: any) {
@@ -74,11 +74,12 @@ export default function SplashForm({ type, data, id }: any) {
     };
     setOpen(true);
     const result = await addSplashImage(val);
-    if (result.status == 200) {
-      setTimeout(() => {
-        setOpen(false);
-      }, 3000);
-    }
+    console.log("add", result);
+    // if (result.status == 200) {
+    //   setTimeout(() => {
+    //     setOpen(false);
+    //   }, 3000);
+    // }
     redirect(`/admin/splashimages`);
   }
   async function updateSplashImages(val: any) {
@@ -96,34 +97,38 @@ export default function SplashForm({ type, data, id }: any) {
     };
     setOpen(true);
     const result = await updateSplashImageById(id, val);
-    if (result.status == 200) {
-      setTimeout(() => {
-        setOpen(false);
-      }, 3000);
-    }
     redirect(`/admin/splashimages`);
   }
 
   const handleImageUpload = async (event: any) => {
-    await handleDeleteImage();
-    setFile(null);
-    const file = event;
-    setLoading(true);
-    const result = await uploadImageS3(file);
-    console.log(result);
-    if (result.status == 200) {
-      setFile(result?.data?.fileName || null);
+    try {
+      await handleDeleteImage();
+      setFile(null);
+      const file = event?.[0];
+      setLoading(true);
+      const result = await uploadImageS3(file);
+      console.log("result image", result);
+      // if (result.status == 200) {
+
+      setFile(result || null);
       setLoading(false);
+      // }
+    } catch (error) {
+      // alert(error);
+      return;
     }
   };
 
   const handleDeleteImage = async () => {
+    // alert(`test`);
     const fileName = file ? file.split("/")[3] + "/" + file.split("/")[4] : "";
+
     if (fileName) {
       const body = {
         fileName: fileName,
       };
       const result = await deleteImageS3(body);
+      setFile(null);
     }
   };
 
@@ -193,7 +198,7 @@ export default function SplashForm({ type, data, id }: any) {
             />
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
-            <FileInput
+            {/* <FileInput
               w={"100%"}
               maw={"600px"}
               label="Image"
@@ -202,9 +207,120 @@ export default function SplashForm({ type, data, id }: any) {
               // description="Input description"
               onChange={handleImageUpload}
               placeholder="upload file"
-            />
-            {isLoad ? (
-              <Box m={2}>
+            /> */}
+            {!file ? (
+              <>
+                <Dropzone
+                  loading={isLoad}
+                  bd={`1px dashed`}
+                  onDrop={handleImageUpload}
+                  maxFiles={1}
+                  // multiple={false}
+                  onReject={(files) => console.log("rejected files", files)}
+                  maxSize={5 * 1024 ** 2}
+                  w={`max-content`}
+                  px={`2rem`}
+                  accept={IMAGE_MIME_TYPE}
+                  style={{
+                    borderRadius: `1rem`,
+                  }}
+                  // {...props}
+                >
+                  <Group
+                    justify="start"
+                    // gap="xl"
+                    mih={220}
+                    miw={330}
+                    style={{ pointerEvents: "none" }}
+                  >
+                    <Dropzone.Accept>
+                      <IconUpload
+                        style={{
+                          width: rem(52),
+                          height: rem(52),
+                          color: "var(--mantine-color-blue-6)",
+                        }}
+                        stroke={1.5}
+                      />
+                    </Dropzone.Accept>
+                    <Dropzone.Reject>
+                      <IconX
+                        style={{
+                          width: rem(52),
+                          height: rem(52),
+                          color: "var(--mantine-color-red-6)",
+                        }}
+                        stroke={1.5}
+                      />
+                    </Dropzone.Reject>
+                    <Dropzone.Idle>
+                      <IconPhoto
+                        style={{
+                          width: rem(52),
+                          height: rem(52),
+                          color: "var(--mantine-color-dimmed)",
+                        }}
+                        stroke={1.5}
+                      />
+                    </Dropzone.Idle>
+
+                    <div>
+                      <Text size="xl" inline>
+                        Drag images here or click to select files
+                      </Text>
+                      <Text size="sm" c="dimmed" inline mt={7}>
+                        Attach as many files as you like, each file should not
+                        exceed 5mb
+                      </Text>
+                    </div>
+                  </Group>
+                </Dropzone>
+              </>
+            ) : (
+              <>
+                <Flex
+                  justify={`center`}
+                  align={`center`}
+                  className={css.image}
+                  mt={`xs`}
+                  w={`150px`}
+                  h={`150px`}
+                  bd={`1px solid gray`}
+                  onClick={() => {
+                    handleDeleteImage();
+                    setFile(null);
+                  }}
+                  style={{
+                    overflow: `hidden`,
+                    cursor: `pointer`,
+                    borderRadius: `0.5em`,
+                  }}
+                >
+                  <img
+                    width={`100%`}
+                    style={{
+                      position: "relative",
+                    }}
+                    alt="preview image"
+                    src={file}
+                  />
+                  <FontAwesomeIcon
+                    className={css.icon}
+                    icon={faTrashCan}
+                    style={{
+                      position: "absolute",
+                      fontSize: "24px",
+                      color: `red`,
+                      opacity: " !important",
+                      // display: `none`,
+                    }}
+                  />
+                </Flex>
+              </>
+            )}
+
+            {/* {isLoad ? (
+              <Box my={2} m={2}>
                 <Loader color="blue" />
               </Box>
             ) : (
@@ -243,13 +359,14 @@ export default function SplashForm({ type, data, id }: any) {
                         position: "absolute",
                         fontSize: "24px",
                         color: `red`,
+                        opacity: " !important",
                         // display: `none`,
                       }}
                     />
                   </Flex>
                 )}
               </>
-            )}
+            )} */}
           </Grid.Col>
         </Grid>
         <Button loading={isOpen} mt={`xl`} type="submit">

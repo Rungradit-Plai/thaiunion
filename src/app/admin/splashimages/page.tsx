@@ -8,7 +8,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default async function page() {
   const data = await getSplashImage();
-
+  console.log(`all splash`, data);
   return (
     <Box>
       <Flex justify={`space-between`}>
@@ -26,7 +26,7 @@ export default async function page() {
         </Link>
       </Flex>
 
-      <TableCustom data={data.data}></TableCustom>
+      <TableCustom data={data}></TableCustom>
     </Box>
   );
 }

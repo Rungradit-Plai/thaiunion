@@ -4,6 +4,7 @@ import SplashForm from "../components/SplashForm";
 import { getSplashImageById } from "@/app/server/admin/splashimages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { PrismaClient } from "@prisma/client";
 export default async function Page({
   params,
   searchParams,
@@ -15,7 +16,7 @@ export default async function Page({
 
   const result = await getSplashImageById(id);
 
-  // console.log(data)
+  console.log(`all result`, result);
   return (
     <Box>
       <Link href={`/admin/splashimages`}>
@@ -25,7 +26,7 @@ export default async function Page({
         />
       </Link>
       <h1>Edit splashimages</h1>
-      <SplashForm type={`update`} data={result.data} id={id} />
+      <SplashForm type={`update`} data={result} id={id} />
     </Box>
   );
 }
