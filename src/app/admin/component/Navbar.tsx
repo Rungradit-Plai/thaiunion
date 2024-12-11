@@ -61,14 +61,14 @@ export default function Navbar({ children }: { children: React.ReactNode }) {
         >
           <List fw={`bold`}>
             {menu.map((row: any, index: number) => (
-              <Link key={index} href={row.link}>
+              <Link key={index} href={row.link} style={{ color: "black" }}>
                 <List.Item
                   key={index}
                   my={`xs`}
                   p={`xs`}
                   mx={`xs`}
                   // ml={'xs'}
-                  c={activeIndex == index ? `primary-color` : ""}
+                  c={activeIndex == index ? `#0080FF` : "black"}
                   bg={activeIndex == index ? `transparent` : ""}
                   style={{
                     listStyle: `none`,
