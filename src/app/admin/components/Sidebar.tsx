@@ -20,11 +20,11 @@ import css from "./sidebar.module.css";
 export default function Sidebar() {
   const [activeIndex, setActive] = useState<any>("");
   const menu = [
-    {
-      image: "...",
-      name: "Dashboard",
-      link: "/admin/dashboard",
-    },
+    // {
+    //   image: "...",
+    //   name: "Dashboard",
+    //   link: "/admin/dashboard",
+    // },
     {
       image: "...",
       name: "Splash image",
@@ -46,8 +46,8 @@ export default function Sidebar() {
           ta={`left`}
         >
           <Group justify={`center`} fz={`h1`} c={`#ffff`} gap={5}>
-            <FontAwesomeIcon icon={faHippo} />
-            <p>Moo Deng</p>
+            {/* <FontAwesomeIcon icon={faHippo} /> */}
+            {/* <p>Moo Deng</p> */}
           </Group>
           <List fw={`bold`}>
             {menu.map((row: any, index: number) => (

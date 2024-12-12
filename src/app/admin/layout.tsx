@@ -12,8 +12,8 @@ import { Children } from "react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 // import { MantineLogo } from '@mantinex/mantine-logo';'
-import Sidebar from "./component/Sidebar";
-import Navbar from "./component/Navbar";
+import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
 import css from "./layout.module.css";
 
 export default function Layouts({ children }: { children: React.ReactNode }) {

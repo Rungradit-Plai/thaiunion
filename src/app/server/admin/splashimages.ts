@@ -27,12 +27,13 @@ export async function addSplashImage(data:any) {
         const {name,description,start_date,end_date,image_path} = await data;
         const result = await prisma.backoffice_splash_page.create({
             data:{
-            uuid:v4(),
-            name,
-            description,
-            start_date,
-            end_date,
-            image_path
+                uuid:v4(),
+                name,
+                description,
+                start_date,
+                end_date,
+                image_path,
+                created_at:new Date(),
             }
         });
         return result;
@@ -97,7 +98,8 @@ export async function updateSplashImageById(id:string,data:any) {
               description,
               start_date,
               end_date,
-              image_path
+              image_path,
+              updated_at:new Date()
           }
         }) ?? [];
         return result;
