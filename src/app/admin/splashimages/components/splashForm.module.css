@@ -5,6 +5,7 @@
         opacity: 0.1;
        .icon{
             display: block;
+            opacity: 1;
            
        }
     }

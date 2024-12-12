@@ -20,11 +20,11 @@ import css from "./sidebar.module.css";
 export default function Sidebar() {
   const [activeIndex, setActive] = useState<any>("");
   const menu = [
-    // {
-    //     image:"...",
-    //     name:"Dashboard",
-    //     link:"/admin/dashboard",
-    // },
+    {
+      image: "...",
+      name: "Dashboard",
+      link: "/admin/dashboard",
+    },
     {
       image: "...",
       name: "Splash image",
@@ -45,9 +45,10 @@ export default function Sidebar() {
           // h={`100vh`}
           ta={`left`}
         >
-          <Box ta={`center`} fz={`h1`} c={`#ffff`}>
+          <Group justify={`center`} fz={`h1`} c={`#ffff`} gap={5}>
             <FontAwesomeIcon icon={faHippo} />
-          </Box>
+            <p>Moo Deng</p>
+          </Group>
           <List fw={`bold`}>
             {menu.map((row: any, index: number) => (
               <Link key={index} href={row.link} style={{ color: "black" }}>
@@ -56,15 +57,14 @@ export default function Sidebar() {
                   my={`xs`}
                   p={`xs`}
                   mx={`xs`}
-                  // ml={'xs'}
-                  c={activeIndex == index ? `white` : "white"}
-                  bg={activeIndex == index ? `transparent` : ""}
+                  c={activeIndex == index ? `#228be6` : "white"}
+                  // bg={activeIndex == index ? `blue` : ""}
                   style={{
                     listStyle: `none`,
                     cursor: `pointer`,
-
                     borderRadius: `5px`,
                   }}
+                  className={css.list}
                   onClick={() => {
                     handleclicked(index);
                   }}

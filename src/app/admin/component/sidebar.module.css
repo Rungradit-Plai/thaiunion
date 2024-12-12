@@ -1,0 +1,5 @@
+.list{
+    &:hover{
+        background-color: #228be6;
+    }
+}
