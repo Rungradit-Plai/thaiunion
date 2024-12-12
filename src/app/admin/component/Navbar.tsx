@@ -8,11 +8,13 @@ import {
   Box,
   Paper,
   Flex,
+  Card,
 } from "@mantine/core";
 export default function Navbar() {
   return (
-    <Flex bd={"0px solid black"}>
+    <Flex ta={`left`} h={`64px`} bd={"0px solid black"}>
       <Box
+        // shadow="sm"
         fz={`1.5rem`}
         fw={`600`}
         flex={`flex`}

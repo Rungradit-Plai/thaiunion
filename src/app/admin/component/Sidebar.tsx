@@ -43,8 +43,8 @@ export default function Sidebar() {
           // h={`100vh`}
           ta={`left`}
         >
-          <Box ta={`center`} fz={`h1`}>
-            Thai union
+          <Box ta={`center`} fz={`h1`} c={`#ffff`}>
+            LOGO
           </Box>
           <List fw={`bold`}>
             {menu.map((row: any, index: number) => (
