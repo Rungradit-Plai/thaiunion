@@ -10,7 +10,7 @@ export default async function page() {
   const data = await getSplashImage();
   console.log(`all splash`, data);
   return (
-    <Box>
+    <Box w={`100%`}>
       <Flex justify={`space-between`}>
         <Box mb={`xl`} fw={`600`} fz={`2.5rem`}>
           Splashimages
