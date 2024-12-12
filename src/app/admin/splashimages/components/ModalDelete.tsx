@@ -3,6 +3,8 @@ import { useDisclosure } from "@mantine/hooks";
 import { redirect } from "next/navigation";
 import { Modal, Button, Box, Flex } from "@mantine/core";
 import { deleteSplashImage } from "@/app/server/admin/splashimages";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function ModalDelete({ opened, open, close, id }: any) {
   async function handleDelete(id: any) {
     const result = await deleteSplashImage(id);
@@ -25,6 +27,12 @@ export default function ModalDelete({ opened, open, close, id }: any) {
         >
           {/* Modal content */}
           <Flex justify={`center`} direction={`column`} rowGap={10}>
+            <FontAwesomeIcon
+              icon={faTrashCan}
+              style={{
+                fontSize: `24px`,
+              }}
+            />
             <Flex justify={`center`}>
               Are you sure you want to delete this item?
             </Flex>
