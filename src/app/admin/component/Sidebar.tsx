@@ -11,6 +11,8 @@ import {
 } from "@mantine/core";
 import { useDisclosure, useHover } from "@mantine/hooks";
 import { trackSynchronousRequestDataAccessInDev } from "next/dist/server/app-render/dynamic-rendering";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHippo } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useState } from "react";
 // import { MantineLogo } from '@mantinex/mantine-logo';
@@ -44,7 +46,7 @@ export default function Sidebar() {
           ta={`left`}
         >
           <Box ta={`center`} fz={`h1`} c={`#ffff`}>
-            LOGO
+            <FontAwesomeIcon icon={faHippo} />
           </Box>
           <List fw={`bold`}>
             {menu.map((row: any, index: number) => (
