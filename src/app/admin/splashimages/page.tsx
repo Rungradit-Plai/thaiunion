@@ -16,13 +16,7 @@ export default async function page() {
           Splashimages
         </Box>
         <Link href={`/admin/splashimages/add`}>
-          <Button>
-            Add +
-            {/* <FontAwesomeIcon
-              icon={faPlus}
-              style={{ fontSize: `20px`, color: `white` }}
-            /> */}
-          </Button>
+          <Button>Add +</Button>
         </Link>
       </Flex>
 
