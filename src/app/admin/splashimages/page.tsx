@@ -26,7 +26,7 @@ export default async function page() {
         </Link>
       </Flex>
 
-      <TableCustom data={data}></TableCustom>
+      <TableCustom data={data} />
     </Box>
   );
 }
