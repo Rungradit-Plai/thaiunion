@@ -191,7 +191,7 @@ export default function SplashForm({ type, data, id }: any) {
               maw={"600px"}
               type="range"
               valueFormat="YYYY-MM-DD"
-              label="Pick dates range"
+              label="Dates range"
               placeholder="Dates range"
               value={value}
               onChange={setValue}
