@@ -33,13 +33,8 @@ export function TableCustom({ data }: any) {
     open;
   }
   const rows = data.map((row: any, index: number) => {
-    // const totalReviews = row.reviews.negative + row.reviews.positive;
-    // const positiveReviews = (row.reviews.positive / totalReviews) * 100;
-    // const negativeReviews = (row.reviews.negative / totalReviews) * 100;
     let start_date = new Date(Date.parse(row.start_date));
     let end_date = new Date(Date.parse(row.end_date));
-    // console.log(data);
-    // return
     return (
       <Table.Tr key={index}>
         <Table.Td ta={`center`}>{index + 1}</Table.Td>
@@ -89,7 +84,7 @@ export function TableCustom({ data }: any) {
           borderRadius: "0.5rem",
         }}
       >
-        <Table striped highlightOnHover verticalSpacing="xs">
+        <Table striped highlightOnHover verticalSpacing="lg">
           <Table.Thead>
             <Table.Tr>
               <Table.Th>No.</Table.Th>

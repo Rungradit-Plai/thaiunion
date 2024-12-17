@@ -24,10 +24,10 @@ export default function Layouts({ children }: { children: React.ReactNode }) {
         <Sidebar />
       </Box>
       <Box w={`100%`}>
-        <Navbar></Navbar>
+        <Navbar />
         <Box p={`2rem`}>
           <Card p={`3rem`} shadow="sm" padding="lg" radius="md" withBorder>
-            {children}
+            {/* {children} */}
           </Card>
         </Box>
       </Box>

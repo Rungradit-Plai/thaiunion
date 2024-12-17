@@ -1,14 +1,5 @@
 "use client";
-import {
-  AppShell,
-  Burger,
-  Group,
-  List,
-  Button,
-  Box,
-  Paper,
-  Flex,
-} from "@mantine/core";
+import { Group, List, Button, Box, Paper, Flex, Card } from "@mantine/core";
 import { useDisclosure, useHover } from "@mantine/hooks";
 import { trackSynchronousRequestDataAccessInDev } from "next/dist/server/app-render/dynamic-rendering";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +9,7 @@ import { useState } from "react";
 // import { MantineLogo } from '@mantinex/mantine-logo';
 import css from "./sidebar.module.css";
 export default function Sidebar() {
-  const [activeIndex, setActive] = useState<any>("");
+  const [activeIndex, setActive] = useState<number>(0);
   const menu = [
     // {
     //   image: "...",
@@ -37,17 +28,16 @@ export default function Sidebar() {
   return (
     <Box h={`100%`}>
       <Flex flex={1} direction={`row`} h={`100%`}>
-        <Box
-          bd={`1px solid black`}
-          //   bg={`#ffff`}
-          bg={`#001529`}
+        <Card
           miw={`280px`}
-          // h={`100vh`}
           ta={`left`}
+          style={{
+            borderRight:
+              "1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4))",
+          }}
         >
           <Group justify={`center`} fz={`h1`} c={`#ffff`} gap={5}>
-            {/* <FontAwesomeIcon icon={faHippo} /> */}
-            {/* <p>Moo Deng</p> */}
+            <Box>Logo</Box>
           </Group>
           <List fw={`bold`}>
             {menu.map((row: any, index: number) => (
@@ -57,12 +47,14 @@ export default function Sidebar() {
                   my={`xs`}
                   p={`xs`}
                   mx={`xs`}
-                  c={activeIndex == index ? `#228be6` : "white"}
+                  fw={`lighter`}
+                  // c={activeIndex == index ? `#228be6` : "white"}
                   // bg={activeIndex == index ? `blue` : ""}
                   style={{
                     listStyle: `none`,
                     cursor: `pointer`,
                     borderRadius: `5px`,
+                    // fontWeight: `lighter`,
                   }}
                   className={css.list}
                   onClick={() => {
@@ -74,7 +66,7 @@ export default function Sidebar() {
               </Link>
             ))}
           </List>
-        </Box>
+        </Card>
       </Flex>
     </Box>
   );

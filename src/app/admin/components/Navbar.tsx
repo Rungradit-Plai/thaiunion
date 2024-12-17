@@ -13,17 +13,19 @@ import {
 export default function Navbar() {
   return (
     <Flex ta={`left`} h={`64px`} bd={"0px solid black"}>
-      <Box
+      <Card
         // shadow="sm"
+        w={`100%`}
         fz={`1.5rem`}
         fw={`600`}
         flex={`flex`}
-        ta={`center`}
+        ta={`left`}
         py={`20px`}
         px={`20px`}
+        shadow="xs"
       >
         Back Office
-      </Box>
+      </Card>
     </Flex>
   );
 }
