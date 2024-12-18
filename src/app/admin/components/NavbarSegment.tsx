@@ -18,12 +18,13 @@ import {
   IconSwitchHorizontal,
   IconUsers,
 } from "@tabler/icons-react";
-import { SegmentedControl, Text } from "@mantine/core";
+import { SegmentedControl, Text, Box } from "@mantine/core";
 import classes from "./sidebar.module.css";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const tabs = [
-  //   { link: "/admin/dashboard", label: "Dashboard", icon: IconReceipt2 },
+  { link: "/admin/dashboard", label: "Dashboard", icon: IconReceipt2 },
   {
     link: "/admin/splashimages",
     label: "Splash Images",
@@ -36,26 +37,27 @@ const tabs = [
   //   { link: "", label: "Other Settings", icon: IconSettings },
 ];
 
-export function NavbarSegmented({ children }: any) {
+export function NavbarSegmented() {
   //   const [section, setSection] = useState<"account" | "general">("account");
-  const [active, setActive] = useState("Splash Images");
+
+  const [active, setActive] = useState("Dashboard");
 
   const links = tabs.map((item, index) => (
-    // <Link index={index} href={item.link}>
-    <a
-      className={classes.link}
-      data-active={item.label === active || undefined}
-      href={item.link}
-      key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.label);
-      }}
-    >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
-    </a>
-    // </Link>
+    <Link key={index} href={item.link} style={{ textDecoration: `none` }}>
+      <Box
+        className={classes.link}
+        data-active={item.label === active || undefined}
+        // href={item.link}
+        key={item.label}
+        onClick={() => {
+          //   event.preventDefault();
+          setActive(item.label);
+        }}
+      >
+        <item.icon className={classes.linkIcon} stroke={1.5} />
+        <span>{item.label}</span>
+      </Box>
+    </Link>
   ));
 
   return (
