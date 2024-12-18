@@ -38,7 +38,13 @@ export default function Layouts({ children }: { children: React.ReactNode }) {
     // <BasicAppShell>
     // </BasicAppShell>
     <BasicAppShell>
-      <Box p={`2rem`}>
+      <Box
+        p={`2rem`}
+        style={{
+          maxHeight: "100%",
+          overflowY: "auto",
+        }}
+      >
         <Card p={`3rem`} shadow="sm" radius="md" withBorder>
           {children ? children : "No data."}
         </Card>
