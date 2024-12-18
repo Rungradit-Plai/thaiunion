@@ -28,10 +28,11 @@ export default function BasicAppShell({ children }: any) {
           Backoffice
         </Group>
       </AppShell.Header>
-      <AppShellNavbar>
+      <AppShell.Navbar>
         <NavbarSegmented />
-      </AppShellNavbar>
+      </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
+      {/* <AppShell.Footer bg={`black`}>test</AppShell.Footer> */}
     </AppShell>
   );
 }

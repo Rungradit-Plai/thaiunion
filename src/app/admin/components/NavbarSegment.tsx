@@ -18,17 +18,19 @@ import {
   IconSwitchHorizontal,
   IconUsers,
 } from "@tabler/icons-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGaugeHigh, faImage } from "@fortawesome/free-solid-svg-icons";
 import { SegmentedControl, Text, Box } from "@mantine/core";
 import classes from "./sidebar.module.css";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 const tabs = [
-  { link: "/admin/dashboard", label: "Dashboard", icon: IconReceipt2 },
+  { link: "/admin/dashboard", label: "Dashboard", icon: faGaugeHigh },
   {
     link: "/admin/splashimages",
     label: "Splash Images",
-    icon: IconBellRinging,
+    icon: faImage,
   },
   //   { link: "", label: "Security", icon: IconFingerprint },
   //   { link: "", label: "SSH Keys", icon: IconKey },
@@ -54,7 +56,8 @@ export function NavbarSegmented() {
           setActive(item.label);
         }}
       >
-        <item.icon className={classes.linkIcon} stroke={1.5} />
+        <FontAwesomeIcon className={classes.linkIcon} icon={item.icon} />
+        {/* <item.icon className={classes.linkIcon} stroke={1.5} /> */}
         <span>{item.label}</span>
       </Box>
     </Link>
