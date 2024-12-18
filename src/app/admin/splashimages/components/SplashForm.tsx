@@ -162,29 +162,6 @@ export default function SplashForm({ type, data, id }: any) {
               {...Form.getInputProps("description")}
             />
           </Grid.Col>
-          {/* <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
-            <DateInput
-              w={"100%"}
-              type="range"
-              maw={"600px"}
-              valueFormat="DD/MM/YYYY HH:mm:ss"
-              label="วันที่เริ่มต้น"
-              placeholder="Date input"
-              key={Form.key(`start_date`)}
-              {...Form.getInputProps("start_date")}
-            />
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
-            <DateInput
-              w={"100%"}
-              maw={"600px"}
-              valueFormat="DD/MM/YYYY HH:mm:ss"
-              label="วันที่สิ้นสุด"
-              placeholder="Date input"
-              key={Form.key(`end_date`)}
-              {...Form.getInputProps("end_date")}
-            />
-          </Grid.Col> */}
           <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
             <DatePickerInput
               w={"100%"}
@@ -198,16 +175,6 @@ export default function SplashForm({ type, data, id }: any) {
             />
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 12, lg: 12 }}>
-            {/* <FileInput
-              w={"100%"}
-              maw={"600px"}
-              label="Image"
-              key={Form.key(`image_path`)}
-              {...Form.getInputProps("image_path")}
-              // description="Input description"
-              onChange={handleImageUpload}
-              placeholder="upload file"
-            /> */}
             {!file ? (
               <>
                 <Dropzone
@@ -318,55 +285,6 @@ export default function SplashForm({ type, data, id }: any) {
                 </Flex>
               </>
             )}
-
-            {/* {isLoad ? (
-              <Box my={2} m={2}>
-                <Loader color="blue" />
-              </Box>
-            ) : (
-              <>
-                {file && (
-                  <Flex
-                    justify={`center`}
-                    align={`center`}
-                    className={css.image}
-                    mt={`xs`}
-                    w={`150px`}
-                    h={`150px`}
-                    bd={`1px solid gray`}
-                    onClick={() => {
-                      handleDeleteImage();
-                      setFile(null);
-                    }}
-                    style={{
-                      overflow: `hidden`,
-                      cursor: `pointer`,
-                      borderRadius: `0.5em`,
-                    }}
-                  >
-                    <img
-                      width={`100%`}
-                      style={{
-                        position: "relative",
-                      }}
-                      alt="preview image"
-                      src={file}
-                    />
-                    <FontAwesomeIcon
-                      className={css.icon}
-                      icon={faTrashCan}
-                      style={{
-                        position: "absolute",
-                        fontSize: "24px",
-                        color: `red`,
-                        opacity: " !important",
-                        // display: `none`,
-                      }}
-                    />
-                  </Flex>
-                )}
-              </>
-            )} */}
           </Grid.Col>
         </Grid>
         <Button loading={isOpen} mt={`xl`} type="submit">
