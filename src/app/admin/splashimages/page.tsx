@@ -5,10 +5,11 @@ import Link from "next/link";
 import css from "./splashimages.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { headers } from "next/headers";
 
 export default async function page() {
   const data = await getSplashImage();
-  console.log(`all splash`, data);
+
   return (
     <Box w={`100%`}>
       <Flex justify={`space-between`}>

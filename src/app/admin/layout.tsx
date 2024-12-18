@@ -39,9 +39,9 @@ export default function Layouts({ children }: { children: React.ReactNode }) {
     // </BasicAppShell>
     <BasicAppShell>
       <Box p={`2rem`}>
-        {/* <Card p={`3rem`} shadow="sm" padding="lg" radius="md" withBorder> */}
-        {children}
-        {/* </Card> */}
+        <Card p={`3rem`} shadow="sm" radius="md" withBorder>
+          {children ? children : "No data."}
+        </Card>
       </Box>
     </BasicAppShell>
   );
