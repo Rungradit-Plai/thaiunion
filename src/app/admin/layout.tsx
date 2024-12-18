@@ -16,6 +16,7 @@ import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import css from "./layout.module.css";
 import BasicAppShell from "./components/Appshell";
+import { NavbarSegmented } from "./components/NavbarSegment";
 
 export default function Layouts({ children }: { children: React.ReactNode }) {
   return (
@@ -33,11 +34,14 @@ export default function Layouts({ children }: { children: React.ReactNode }) {
     //     </Box>
     //   </Box>
     // </Flex>
+
+    // <BasicAppShell>
+    // </BasicAppShell>
     <BasicAppShell>
       <Box p={`2rem`}>
-        <Card p={`3rem`} shadow="sm" padding="lg" radius="md" withBorder>
-          {children}
-        </Card>
+        {/* <Card p={`3rem`} shadow="sm" padding="lg" radius="md" withBorder> */}
+        {children}
+        {/* </Card> */}
       </Box>
     </BasicAppShell>
   );
