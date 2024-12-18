@@ -19,18 +19,26 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGaugeHigh, faImage } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGaugeHigh,
+  faImage,
+  faDesktop,
+} from "@fortawesome/free-solid-svg-icons";
 import { SegmentedControl, Text, Box } from "@mantine/core";
 import classes from "./sidebar.module.css";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 const tabs = [
-  { link: "/admin/dashboard", label: "Dashboard", icon: faGaugeHigh },
+  {
+    link: "/admin/dashboard",
+    label: "Dashboard",
+    icon: faGaugeHigh,
+  },
   {
     link: "/admin/splashimages",
     label: "Splash Images",
-    icon: faImage,
+    icon: faDesktop,
   },
   //   { link: "", label: "Security", icon: IconFingerprint },
   //   { link: "", label: "SSH Keys", icon: IconKey },

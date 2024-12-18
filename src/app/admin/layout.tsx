@@ -6,6 +6,8 @@ import {
   Group,
   Skeleton,
   Card,
+  createTheme,
+  MantineProvider,
 } from "@mantine/core";
 // import { useDisclosure } from '@mantine/hooks';
 import { Children } from "react";
@@ -37,18 +39,20 @@ export default function Layouts({ children }: { children: React.ReactNode }) {
 
     // <BasicAppShell>
     // </BasicAppShell>
-    <BasicAppShell>
-      <Box
-        p={`2rem`}
-        style={{
-          maxHeight: "100%",
-          overflowY: "auto",
-        }}
-      >
-        <Card p={`3rem`} shadow="sm" radius="md" withBorder>
-          {children ? children : "No data."}
-        </Card>
-      </Box>
-    </BasicAppShell>
+    <MantineProvider>
+      <BasicAppShell>
+        <Box
+          p={`2rem`}
+          style={{
+            maxHeight: "100%",
+            overflowY: "auto",
+          }}
+        >
+          <Card p={`3rem`} shadow="sm" radius="md" withBorder>
+            {children ? children : "No data."}
+          </Card>
+        </Box>
+      </BasicAppShell>
+    </MantineProvider>
   );
 }
