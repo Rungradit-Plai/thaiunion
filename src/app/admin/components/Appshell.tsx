@@ -55,7 +55,7 @@ export default function BasicAppShell({ children }: any) {
           {/* <MantineLogo size={30} /> */}
           <Box>Backoffice</Box>
           <Switch
-            size="md"
+            size="xl"
             color="dark.4"
             onLabel={sunIcon}
             offLabel={moonIcon}
