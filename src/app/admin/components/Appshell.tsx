@@ -53,7 +53,7 @@ export default function BasicAppShell({ children }: any) {
         <Group h="100%" px="md" justify={`space-between`} gap={`xl`}>
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           {/* <MantineLogo size={30} /> */}
-          <Box>Backoffice</Box>
+          <Box>BACKEOFFICES</Box>
           <Switch
             size="xl"
             color="dark.4"
